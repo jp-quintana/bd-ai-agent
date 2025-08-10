@@ -1,23 +1,25 @@
-from functions.get_file_content import get_file_content
+from functions.run_python_file import run_python_file
 
 
 def test():
-    # print(get_file_content("calculator", "lorem.txt"))
-    result = get_file_content("calculator", "main.py")
-    print("Result for current directory:")
-    print(result)
-    print("")
-
-    result = get_file_content("calculator", "pkg/calculator.py")
-    print("Result for 'pkg' directory:")
+    print('\n--- Test 1: run_python_file("calculator", "main.py") ---')
+    result = run_python_file("calculator", "main.py")
     print(result)
 
-    result = get_file_content("calculator", "/bin/cat")
-    print("Result for '/bin' directory:")
+    print('\n--- Test 2: run_python_file("calculator", "main.py", ["3 + 5"]) ---')
+    result = run_python_file("calculator", "main.py", ["3 + 5"])
     print(result)
 
-    result = get_file_content("calculator", "pkg/does_not_exist.py")
-    print("Result for '../' directory:")
+    print('\n--- Test 3: run_python_file("calculator", "tests.py") ---')
+    result = run_python_file("calculator", "tests.py")
+    print(result)
+
+    print('\n--- Test 4: run_python_file("calculator", "../main.py") ---')
+    result = run_python_file("calculator", "../main.py")
+    print(result)
+
+    print('\n--- Test 5: run_python_file("calculator", "nonexistent.py") ---')
+    result = run_python_file("calculator", "nonexistent.py")
     print(result)
 
 
